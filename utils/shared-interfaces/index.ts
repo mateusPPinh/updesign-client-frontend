@@ -1,0 +1,10 @@
+export type { UmbrielVectorProps } from './UmbrielVectorProps';
+export type { BlocksDataProps } from './BlocksDataProps';
+export type { CarouselProps } from './CarrouselProps';
+export type { ComponentsProps } from './ComponentsProps';
+export type { EditorialProps } from './EditorialsProps';
+export type { FooterProps } from './FooterProps';
+export type { MenuProps } from './MenuProps';
+export type { PageProps } from './PageProps';
+export type { CenterMiddleProps } from './CenterMiddleProps';
+export type { ArticleProps } from './ArticleProps';
