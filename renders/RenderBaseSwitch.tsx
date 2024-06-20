@@ -2,41 +2,38 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 const RenderSiteData = dynamic(() => import('@app/renders/RenderSiteData'));
-const RenderSiteComponents = dynamic(
-  () => import('@app/renders/RenderSiteComponents')
-);
+const RenderSiteComponents = dynamic(() => import('@app/renders/RenderSiteComponents'));
 
 type BaseSwitchProps = {
   pageblockData: Array<unknown>;
   components: Array<unknown>;
   pageblockDataSlotType: string | null;
   componentsType: string | null;
+  articlesList: any;
 };
 
 const BaseSwitch: React.FC<BaseSwitchProps> = ({
   components,
   pageblockData,
   componentsType,
-  pageblockDataSlotType
+  pageblockDataSlotType,
+  articlesList,
 }) => {
   const renderComponents = () => {
     const elements = [];
     console.log('elements BaseSwitch', pageblockData);
 
-    if (componentsType === 'input_components') {
+    if (componentsType === 'input_components' && components) {
       elements.push(
         <RenderSiteComponents {...components} key={componentsType} />
       );
     }
 
-    if (pageblockDataSlotType === 'slot') {
+    if (articlesList && Object.keys(articlesList).length > 0) {
       elements.push(
         <RenderSiteData
-          blocksData={{
-            centerMiddle: undefined
-          }}
-          {...pageblockData}
-          key={pageblockDataSlotType}
+          articleData={{ ...articlesList }}
+          key={JSON.stringify(articlesList)}
         />
       );
     }

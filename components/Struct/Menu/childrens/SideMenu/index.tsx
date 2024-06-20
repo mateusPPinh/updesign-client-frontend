@@ -3,20 +3,20 @@ import Link from 'next/link';
 
 import menuFooter from '@app/mocks/menu-footer.json';
 
+type MenuItem = { title: string; href: string };
 type SideMenuProps = {
+  data: MenuItem[];
   handleOpenMenu: () => void;
   isOpen: boolean;
-  data: any;
 };
 
 export default function SideMenu({
   data,
   handleOpenMenu,
-  isOpen,
+  isOpen
 }: SideMenuProps) {
+  console.log('data sidemenu', data)
   const menuClass = isOpen ? 'translate-x-0' : 'translate-x-full';
-  // h-[calc(-136px_+_100%)] z-10
-  const menuItems = Object.values(data);
   return (
     <div
       className={`fixed
@@ -36,9 +36,9 @@ export default function SideMenu({
       font-noto
       flex-col
       justify-between
-      bg-blueDark
       px-10
       py-24
+      sideMenuBgColor
       `}
     >
       <div className="items-center flex flex-row justify-end">
@@ -57,7 +57,7 @@ export default function SideMenu({
         </button>
       </div>
       <div className="items-end flex flex-col justify-start">
-        {menuItems.map((item: any) => (
+        {data.map((item: MenuItem) => (
           <Link href={item.href} key={item.title}>
             <h1 className="text-3xl text-white mb-10">{item.title}</h1>
           </Link>
@@ -66,7 +66,11 @@ export default function SideMenu({
       <div className="w-max items-start flex flex-row">
         {menuFooter.map((link) => (
           <div className="items-start flex flex-row ml-8 mb-0" key={link.name}>
-            <Link href={link.url} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={`${link.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
                 src={link.brand_path}
                 width={20}

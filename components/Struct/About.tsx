@@ -1,29 +1,31 @@
-import { ArticleProps } from '@app/utils/shared-interfaces';
-import Article from '../Article';
+import isEmpty from 'lodash/isEmpty';
+import dynamic from 'next/dynamic';
 import get from 'lodash/get';
+const PlaceholderComponent = dynamic(() =>
+  import('@app/components/PlaceholderComponent').then((mod) => mod.default)
+);
 
 type AboutProps = {
   pageData?: any;
-  articles?: ArticleProps[];
+  pageblockData: Array<unknown>;
 };
 
-export default function About({ articles, pageData }: AboutProps) {
-  const articleData = get(articles, 'articles', []);
-  console.log('props from about page: articleData', articleData);
+export default function About({ pageblockData, pageData }: AboutProps) {
+  const getPageDataId = get(pageData, 'id', '');
+  const getPageDataTitle = get(pageData, 'title', '');
+  const checkIfHasData = isEmpty(pageblockData);
   return (
-    <>
-      {articleData &&
-        articleData.map((it: ArticleProps) => (
-          <Article
-            key={it.title}
-            created_at={it.created_at}
-            updated_at={it.updated_at}
-            articleBody={it.articleBody}
-            author={it.author}
-            title={it.title}
-            subtitle={it.subtitle}
-          />
-        ))}
-    </>
+    <div className='flex items-center justify-center m-[100px]'>
+      {checkIfHasData ? (
+         <PlaceholderComponent 
+          message="Great! You have successfully created your page, but we noticed that you haven't added any components yet. How about getting started?"
+          pageId={getPageDataId}
+          pageTitle={getPageDataTitle}
+       />
+      ) : (
+        // Render the actual contact page components here
+        <div>{/* Your contact page components */}</div>
+      )}
+    </div>
   );
 }

@@ -1,17 +1,8 @@
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
+import { loadClientAppInfo, loadComponents, loadPages, receivePageBlocks } from '@app/store/api-handler';
+import { UmbrielVectorProps, PageProps, ComponentsProps } from '@app/utils/shared-types';
 import get from 'lodash/get';
-import {
-  loadClientAppInfo,
-  loadComponents,
-  loadPages,
-  receivePageBlocks
-} from '@app/store/api-handler';
-import {
-  UmbrielVectorProps,
-  PageProps,
-  ComponentsProps
-} from '@app/utils/shared-types';
 
 interface SlugProps {
   createSlug: PageProps[];
@@ -23,13 +14,11 @@ interface SlugProps {
 const RenderPages = dynamic(() => import('../renders/RenderPages'));
 const RenderSlots = dynamic(() => import('../renders/RenderSlots'));
 const BaseStruct = dynamic(() => import('../components/Struct/BaseStruct'));
-const Seo = dynamic(() => import('@app/providers/Seo'))
+const Seo = dynamic(() => import('@app/providers/Seo'));
 
-const DynamicPage = ({ createSlug, siteData, components, appInfo }: SlugProps) => {
-  if (typeof window !== 'undefined') {
-    console.group('[PageSlugProps]', siteData);
-  }
-  
+const HomePage = ({ createSlug, siteData, appInfo, components }: SlugProps) => {
+  console.log('Site data:', siteData);
+
   return (
     <Seo slugData={createSlug} favico={appInfo}>
       <BaseStruct navigation={siteData}>
@@ -41,46 +30,42 @@ const DynamicPage = ({ createSlug, siteData, components, appInfo }: SlugProps) =
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const slugFromURL = Array.isArray(context.params?.slug)
-    ? context.params.slug.join('/')
-    : context.params?.slug || 'home';
+  const slugFromURL = Array.isArray(context.params?.slug) ? context.params.slug[0] : context.params?.slug || 'home';
 
   const pagesData = await loadPages();
+  console.log('Pages data:', pagesData);
 
   // favicons
   const loadClientInfo = await loadClientAppInfo();
   const data = get(loadClientInfo, '[0]', []);
   const loadIcons = get(data, 'favicon', {});
 
-  const currentPageData = pagesData.find(
-    (page: { slug: string | undefined }) => page.slug === slugFromURL
-  );
+  const currentPageData = pagesData.find((page: { slug: string | undefined }) => page.slug === slugFromURL);
 
   if (!currentPageData) {
     return { notFound: true };
   }
 
-  const siteData = currentPageData
-    ? await receivePageBlocks(currentPageData.id)
-    : null;
+  const siteData = currentPageData ? await receivePageBlocks(currentPageData.id) : null;
+  console.log('Site data:', siteData);
 
   const currentPageId = currentPageData.id;
 
-  const pageBlockForCurrentPage = siteData.find(
-    (pageBlock: { pageId: unknown }) => pageBlock.pageId === currentPageId
-  );
+  const pageBlockForCurrentPage = siteData.find((pageBlock: { pageId: unknown }) => pageBlock.pageId === currentPageId);
+  console.log('Page block for current page:', pageBlockForCurrentPage);
 
   const loadSiteComponentsData = await loadComponents();
   const components = loadSiteComponentsData;
+  console.log('Components data:', components);
 
   return {
     props: {
       createSlug: currentPageData ? [currentPageData] : [],
-      siteData: pageBlockForCurrentPage || [],
+      siteData: pageBlockForCurrentPage ? [pageBlockForCurrentPage] : [],
       components: components || [],
-      appInfo: loadIcons || {}
-    }
+      appInfo: loadIcons || {},
+    },
   };
 };
 
-export default DynamicPage;
+export default HomePage;

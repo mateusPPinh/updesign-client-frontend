@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const umbriel_api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_UMBRIEL_API}`
+  baseURL: process.env.NEXT_PUBLIC_UMBRIEL_API
 });
 
 export default api;

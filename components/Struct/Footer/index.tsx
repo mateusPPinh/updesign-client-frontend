@@ -2,8 +2,16 @@ import Image from 'next/image';
 import footerIcons from '@app/mocks/footer-icons.json';
 import Link from 'next/link';
 
-export default function Footer(props: any) {
-  const footerObj = Object.values(props);
+type FooterItem = {
+  title_top: string;
+  title_bottom: string;
+};
+
+type FooterProps = {
+  items: FooterItem[];
+};
+
+export default function Footer({ items }: FooterProps) {
   return (
     <div className="w-full flex justify-center items-center">
       <div className="max-w-7xl w-full flex flex-col items-center justify-center mx-auto">
@@ -11,7 +19,7 @@ export default function Footer(props: any) {
           <div className="border-t border-black w-full flex justify-center items-center h-10"></div>
           <div className="w-[calc(100%-80px)] flex flex-row justify-between mb-10">
             <div className="w-8 items-center flex flex-col justify-center ml-0 mr-0 mb-0 pt-0 pb-0">
-              <Link href="/home" target="_blank" rel="noopener noreferrer">
+              <Link href="/" target="_blank" rel="noopener noreferrer">
                 <Image
                   loading="eager"
                   alt="Logomarca UpDesign Brasil"
@@ -24,10 +32,10 @@ export default function Footer(props: any) {
               </Link>
             </div>
 
-            {footerObj.map((it: any) => (
+            {items.map((it: FooterItem, index) => (
               <div
                 className="w-max flex flex-col justify-center ml-0 mr-0 mb-0 pt-0 pb-0"
-                key={it.title_top}
+                key={index}
               >
                 <p className="paragraphTitleFooter font-poppins">
                   {it.title_top}

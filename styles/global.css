@@ -13,6 +13,10 @@
   letter-spacing: 3px;
 }
 
+.sideMenuBgColor {
+  background-color: #142634;
+}
+
 .paragraphSubtitleFooter {
   font-size: 12px;
   line-height: 110%;
@@ -108,7 +112,7 @@ a {
   font-weight: 500;
 }
 
-.articleClass {
+/* .articleClass {
   box-shadow: none;
   max-width: 1280px;
   width: 100%;
@@ -132,7 +136,7 @@ a {
   height: auto;
   margin-bottom: 16px;
   padding-bottom: 0px;
-}
+} */
 
 .articleClass3 {
   box-shadow: none;
@@ -161,4 +165,68 @@ a {
   margin-bottom: 0px;
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+.article_html img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  padding-bottom: 0px;
+}
+
+/* Estilos para textos */
+.article__text__body {
+  box-shadow: none;
+  max-width: 680px;
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 1016px) {
+  .eZduNu {
+    width: calc(100% - 80px);
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+
+@media (min-width: 1016px) {
+  .article_html img {
+    width: 100%;
+    max-width: 1280px;
+    margin-bottom: 40px;
+  }
+}
+
+.article_html img {
+  width: 100% !important;
+  align-items: flex-start;
+  display: flex;
+}
+
+.article_html {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 16px;
+  padding-bottom: 0px;
 }

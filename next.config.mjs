@@ -5,12 +5,12 @@ const nextConfig = {
   },
   async rewrites () {
     return {
-      fallback: [
-        {
-          source: '/:slug*',
-          destination: '/home',
-        },
-      ]
+      // fallback: [
+      //   {
+      //     source: '/:index*',
+      //     destination: '/home',
+      //   },
+      // ]
     }
   },
   reactStrictMode: true,

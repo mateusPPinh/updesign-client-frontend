@@ -1,0 +1,10 @@
+{
+  [
+    'public/androidChrome192.png',
+    'public/androidChrome512.png',
+    'public/appleTouchIcon.png',
+    'public/favicon16.png',
+    'public/favicon32.png',
+    'public/faviconIco.png'
+  ]
+}

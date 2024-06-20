@@ -3,13 +3,16 @@ import { loaderProp } from '@app/utils/loaderSrcNextImage';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-export default function CarouselContainer(props: any) {
+type CarrouselItems = { image_middle_desktop_path: string, image_mobile_path: string };
+type CarrouselContainerProps = { items: CarrouselItems[] }
+
+export default function CarouselContainer({ items }: CarrouselContainerProps) {
+  console.log("Carrousel Container:", items)
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
-  const carouselData = Object.values(props);
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
-        {carouselData.map((it: any, index) => (
+        {items.map((it: CarrouselItems, index) => (
           <div className="flex-none w-full h-full" key={index}>
             <Image
               src={it.image_middle_desktop_path}
