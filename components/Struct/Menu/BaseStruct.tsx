@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
+import Overlay from '../Overlay';
 
 const SideMenu = dynamic(() => import('./childrens/SideMenu'));
 type MenuItem = { title: string, href: string };
@@ -54,6 +55,7 @@ export default function MenuBaseStruct({
           alt="Indicador de Navegação para Menu"
         />
       </button>
+      <Overlay isVisible={isMenuOpen} onClick={toggleMenu} />
       <SideMenu data={items} handleOpenMenu={toggleMenu} isOpen={isMenuOpen} />
     </>
   );
