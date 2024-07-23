@@ -9,13 +9,6 @@ type HomeProps = {
   articles: ArticleProps[];
 };
 
-const customImageContainerStyle = {
-  width: '580px',
-  height: '435px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-};
 
 export default function Home(props: HomeProps) {
   const articlesdata = get(props.articles, 'articles', []);
@@ -23,10 +16,10 @@ export default function Home(props: HomeProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-      <div className="flex flex-wrap -mx-2">
+      <div id="projetos" className="flex flex-wrap -mx-2">
         {articlesdata.map((article: ArticleProps, index) => (
           <div key={index} className="w-full sm:w-1/2 px-2 mb-4">
-            <div style={customImageContainerStyle}>
+            <div>
               <Link href={`/${article.editorial?.slug}/${article.slug}`}>
                 <Image
                   src={article.content?.image.desktop_image_path ?? ''}

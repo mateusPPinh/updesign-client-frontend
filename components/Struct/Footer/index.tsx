@@ -17,8 +17,8 @@ export default function Footer({ items }: FooterProps) {
       <div className="max-w-7xl w-full flex flex-col items-center justify-center mx-auto">
         <div className="w-[calc(100%-32px)] items-center flex flex-col justify-center ml-4 mr-16">
           <div className="border-t border-black w-full flex justify-center items-center h-10"></div>
-          <div className="w-[calc(100%-80px)] flex flex-row justify-between mb-10">
-            <div className="w-8 items-center flex flex-col justify-center ml-0 mr-0 mb-0 pt-0 pb-0">
+          <div className="w-[calc(100%-80px)] flex flex-col sm:flex-row justify-between mb-10">
+            <div className="w-8 items-center flex flex-col justify-center ml-0 mr-0 mb-6 pt-0 pb-0">
               <Link href="/" target="_blank" rel="noopener noreferrer">
                 <Image
                   loading="eager"
@@ -34,7 +34,7 @@ export default function Footer({ items }: FooterProps) {
 
             {items.map((it: FooterItem, index) => (
               <div
-                className="w-max flex flex-col justify-center ml-0 mr-0 mb-0 pt-0 pb-0"
+                className="w-max flex flex-col justify-center ml-0 mr-0 mb-6 pt-0 pb-0"
                 key={index}
               >
                 <p className="paragraphTitleFooter font-poppins">
@@ -47,7 +47,7 @@ export default function Footer({ items }: FooterProps) {
             ))}
 
             <div className="items-center flex flex-col justify-center mb-6">
-              <div className="w-full flex flex-row">
+              <div className="w-full flex sm:flex-row">
                 {footerIcons.map((link) => (
                   <div
                     className="flex items-start flex-col justify-start mr-8 mb-0"

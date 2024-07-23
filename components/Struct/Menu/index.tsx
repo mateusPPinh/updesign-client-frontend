@@ -13,7 +13,7 @@ export default function Menu({ items }: MenuProps) {
   };
 
   return (
-    <div className="menuBackgroundGradient px-10 flex h-32 w-[calc(100%-32px)] justify-between items-center flex-row absolute z-10">
+    <div className="menuBackgroundGradient px-10 flex h-32 w-[calc(100%)] justify-between items-center flex-row absolute z-10">
       <MenuBaseStruct
         items={items}
         toggleMenu={toggleMenu}
