@@ -15,7 +15,6 @@ export default function SideMenu({
   handleOpenMenu,
   isOpen
 }: SideMenuProps) {
-  console.log('data sidemenu', data)
   const menuClass = isOpen ? 'translate-x-0' : 'translate-x-full';
   return (
     <div
@@ -26,10 +25,10 @@ export default function SideMenu({
       max-w-sm
       w-full
       h-full
-    bg-white
+      bg-white
       transform ${menuClass}
       transition-transform
-      duration-300
+      duration-500
       ease-in-out
       flex
       items-end
