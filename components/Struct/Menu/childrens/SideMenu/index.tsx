@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 import menuFooter from '@app/mocks/menu-footer.json';
 
@@ -15,6 +16,17 @@ export default function SideMenu({
   handleOpenMenu,
   isOpen
 }: SideMenuProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const menuClass = isOpen ? 'translate-x-0' : 'translate-x-full';
   return (
     <div
@@ -23,7 +35,7 @@ export default function SideMenu({
       right-0
       z-10
       max-w-sm
-      w-full
+      w-[calc(100%-32px)]
       h-full
       bg-white
       transform ${menuClass}
@@ -58,7 +70,9 @@ export default function SideMenu({
       <div className="items-end flex flex-col justify-start">
         {data.map((item: MenuItem) => (
           <Link href={item.href} key={item.title}>
-            <h1 className="text-3xl text-white mb-10">{item.title}</h1>
+            <h1 className="text-white mb-10 !font-poppins text-[32px] font-medium">
+              {item.title}
+            </h1>
           </Link>
         ))}
       </div>

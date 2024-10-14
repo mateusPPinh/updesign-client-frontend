@@ -4,27 +4,34 @@ import { Montserrat, Noto_Sans, Poppins } from 'next/font/google';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google';
+import '../styles/article.styles.css';
+import '@fontsource-variable/montserrat';
+import '@fontsource-variable/noto-sans';
+import '@fontsource/poppins';
 
 export const montserrat = Montserrat({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-montserrat'
 });
 
 export const notosans = Noto_Sans({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-notosans'
 });
 
 export const poppins = Poppins({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-poppins'
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -41,10 +48,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <>
+    <main
+      className={`${notosans.variable} ${montserrat.variable} ${poppins.variable}`}
+    >
       <Component {...pageProps} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
-    </>
+    </main>
   );
 }
 

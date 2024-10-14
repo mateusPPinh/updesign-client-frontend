@@ -37,10 +37,10 @@ export default function Footer({ items }: FooterProps) {
                 className="w-max flex flex-col justify-center ml-0 mr-0 mb-6 pt-0 pb-0"
                 key={index}
               >
-                <p className="paragraphTitleFooter font-poppins">
+                <p className="font-poppins text-xs font-bold tracking-[3px] uppercase mb-1">
                   {it.title_top}
                 </p>
-                <p className="paragraphSubtitleFooter font-noto">
+                <p className="font-noto text-xs font-normal">
                   {it.title_bottom}
                 </p>
               </div>
@@ -72,6 +72,28 @@ export default function Footer({ items }: FooterProps) {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="w-full flex flex-row justify-center items-center mt-[-20px] mb-6">
+            <small className="font-poppins text-xs font-medium mr-1 tracking-[1px]">
+              UPDesign Brasil - 2024 Todos os direitos reservados
+            </small>
+            <small className="ml-1 mr-1">|</small>
+            <small className="font-poppins text-xs font-medium mr-1 tracking-[1px]">
+              Desenvolvido e distribuído por
+            </small>
+            <Image
+              loading="eager"
+              alt="Logomarca UpDesign Brasil"
+              src="/assets/umbriel-logo.svg"
+              width={0}
+              height={0}
+              priority={true}
+              style={{
+                height: 'auto',
+                width: '80px',
+                backgroundSize: 'cover'
+              }}
+            />
           </div>
         </div>
       </div>

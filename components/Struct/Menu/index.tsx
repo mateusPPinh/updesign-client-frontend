@@ -2,8 +2,8 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 const MenuBaseStruct = dynamic(() => import('./BaseStruct'));
 
-type MenuItem = { title: string, href: string };
-type MenuProps = { items: MenuItem[] }
+type MenuItem = { title: string; href: string };
+type MenuProps = { items: MenuItem[] };
 
 export default function Menu({ items }: MenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Menu({ items }: MenuProps) {
   };
 
   return (
-    <div className="menuBackgroundGradient px-10 flex h-32 w-[calc(100%)] justify-between items-center flex-row absolute z-10">
+    <div className="menuBackgroundGradient px-10 flex h-full max-h-[120px] w-full justify-between items-center flex-row absolute z-10 top-0">
       <MenuBaseStruct
         items={items}
         toggleMenu={toggleMenu}

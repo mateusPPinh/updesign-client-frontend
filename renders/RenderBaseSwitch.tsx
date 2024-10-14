@@ -1,15 +1,19 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { UmbrielVectorProps } from '@app/utils/shared-interfaces';
 
 const RenderSiteData = dynamic(() => import('@app/renders/RenderSiteData'));
-const RenderSiteComponents = dynamic(() => import('@app/renders/RenderSiteComponents'));
+const RenderSiteComponents = dynamic(
+  () => import('@app/renders/RenderSiteComponents')
+);
 
 type BaseSwitchProps = {
-  pageblockData: Array<unknown>;
-  components: Array<unknown>;
+  pageblockData: UmbrielVectorProps[];
+  components: Array<any>;
   pageblockDataSlotType: string | null;
   componentsType: string | null;
   articlesList: any;
+  clientComponents: Array<unknown>;
 };
 
 const BaseSwitch: React.FC<BaseSwitchProps> = ({
@@ -18,6 +22,7 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
   componentsType,
   pageblockDataSlotType,
   articlesList,
+  clientComponents
 }) => {
   const renderComponents = () => {
     const elements = [];
@@ -34,6 +39,7 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
         <RenderSiteData
           articleData={{ ...articlesList }}
           key={JSON.stringify(articlesList)}
+          components={clientComponents}
         />
       );
     }

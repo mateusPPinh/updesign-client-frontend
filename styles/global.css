@@ -230,3 +230,38 @@ a {
   margin-bottom: 16px;
   padding-bottom: 0px;
 }
+
+.projectsIndicatorAnimation {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  animation-name: bounce;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 0.5s;
+  position: relative;
+  transform-origin: center bottom;
+  margin-top: 1px;
+  margin-right: 8px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounceAnimation {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
