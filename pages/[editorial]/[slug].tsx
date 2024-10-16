@@ -1,13 +1,18 @@
-import { ArticleProps } from '@app/utils/shared-interfaces';
-import dynamic from 'next/dynamic';
+'use client';
+
 import { useRouter } from 'next/router';
-const RenderSlots = dynamic(() => import('../../renders/RenderSlots'));
+import dynamic from 'next/dynamic';
+import { useContext, useEffect } from 'react';
+import DataContext from '@app/contexts/DataContext';
 import Seo from '@app/providers/Seo';
+import get from 'lodash/get';
+import { ArticleProps } from '@app/utils/shared-interfaces';
 import {
   loadClientAppInfo,
   loadClientComponents
 } from '@app/store/api-handler';
-import get from 'lodash/get';
+
+const RenderSlots = dynamic(() => import('../../renders/RenderSlots'));
 const PageLoading = dynamic(() => import('@app/components/PageLoading'));
 
 interface ArticlePageProps {
@@ -17,8 +22,14 @@ interface ArticlePageProps {
 }
 
 const ArticlePage = ({ article, appInfo, components }: ArticlePageProps) => {
-  console.log(article);
   const router = useRouter();
+  const { articles, fetchArticles } = useContext(DataContext);
+
+  useEffect(() => {
+    if (!articles || articles.length === 0) {
+      fetchArticles && fetchArticles();
+    }
+  }, [articles, fetchArticles]);
 
   if (router.isFallback) {
     return <PageLoading />;
@@ -44,6 +55,7 @@ export async function getStaticPaths() {
 
   return { paths, fallback: true };
 }
+
 interface Params {
   params: {
     editorial: string;
@@ -66,14 +78,11 @@ export async function getStaticProps({
 }: Params): Promise<StaticPropsResult> {
   const { editorial, slug } = params;
 
-  console.log('Fetching article:', editorial, slug);
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_UMBRIEL_API}/articles/${editorial}/${slug}`
   );
   const article: ArticleProps = await res.json();
 
-  // favicons
   const loadClientInfo = await loadClientAppInfo();
   const loadSiteComponentsData = await loadClientComponents();
   const components = loadSiteComponentsData;
@@ -81,10 +90,38 @@ export async function getStaticProps({
   const loadIcons = get(data, 'favicon', {});
 
   if (!article) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
     return {
-      notFound: true
+      notFound: true,
+      props: {
+        article: {
+          articleBody: '',
+          editorialId: '',
+          status: 'notPublished',
+          subtitle: '',
+          title: '',
+          content: {
+            image: {
+              desktop_image_path: '',
+              image_mobile_path: ''
+            }
+          },
+          editorial: {
+            description: '',
+            slug: '',
+            title: ''
+          },
+          email: '',
+          isAward: false,
+          pageBgColor: '',
+          slug: '',
+          social_networks: '',
+          static_page_id: '',
+          uploadedArticleImgs: []
+        },
+        appInfo: {},
+        components: []
+      },
+      revalidate: 0
     };
   }
 

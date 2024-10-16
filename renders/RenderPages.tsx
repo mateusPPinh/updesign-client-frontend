@@ -24,7 +24,6 @@ const RenderPages = ({ pageDataProps, pageblockData }: RenderSwitchProps) => {
     return null;
   }
   const pageData = get(pageDataProps, '[0]', []);
-  console.log('render pages', pageData);
   const pageTemplate = get(pageData, 'page_template', null);
   const mountPageInputTemplate = `page_input_template${pageTemplate}`;
 

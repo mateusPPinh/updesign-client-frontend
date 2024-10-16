@@ -20,11 +20,9 @@ interface Props {
 }
 
 export default function RenderSiteData({ articleData, components }: Props) {
-  console.log(components);
   const deliveryMenuData = get(components, '[0]', []);
   const menuDataStruct = get(deliveryMenuData, 'component_data_struct', []);
   const menuData = get(menuDataStruct, 'menu', []);
-  console.log('deliveryMenuData:::', menuDataStruct);
 
   const bgColorClass =
     typeof articleData.pageBgColor === 'string' &&
