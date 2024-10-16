@@ -23,7 +23,6 @@ export default function BannerProjects(props: {
     component_title,
     component_description
   } = props;
-  // console.log('props from render site components', props);
   return (
     <div className="flex flex-row justify-center items-start p-0 w-full max-w-6xl">
       <div

@@ -26,8 +26,6 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
 }) => {
   const renderComponents = () => {
     const elements = [];
-    console.log('elements BaseSwitch', pageblockData);
-
     if (componentsType === 'input_components' && components) {
       elements.push(
         <RenderSiteComponents {...components} key={componentsType} />
@@ -45,7 +43,6 @@ const BaseSwitch: React.FC<BaseSwitchProps> = ({
     }
 
     if (elements.length === 0) {
-      console.log('No data found for both cases');
       return null;
     }
 

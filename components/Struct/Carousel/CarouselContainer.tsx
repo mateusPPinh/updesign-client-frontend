@@ -11,7 +11,6 @@ type CarrouselItems = {
 type CarrouselContainerProps = { items: CarrouselItems[] };
 
 export default function CarouselContainer({ items }: CarrouselContainerProps) {
-  console.log('Carrousel Container:', items);
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
 
   return (

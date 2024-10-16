@@ -10,6 +10,7 @@ import '@fontsource-variable/montserrat';
 import '@fontsource-variable/noto-sans';
 import '@fontsource/poppins';
 import { useWindowSize } from 'rooks';
+import { DataContextProvider } from '@app/contexts/DataContext';
 
 export const montserrat = Montserrat({
   weight: ['400', '700', '500'],
@@ -59,7 +60,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main
       className={`${notosans.variable} ${montserrat.variable} ${poppins.variable}`}
     >
-      <Component {...pageProps} />
+      <DataContextProvider>
+        <Component {...pageProps} />
+      </DataContextProvider>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
     </main>
   );

@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { ReactNode } from "react";
+import Head from 'next/head';
+import { ReactNode } from 'react';
 
 interface Props {
   slugData?: any;
@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Seo = ({ children, slugData, favico }: Props) => {
-  console.log(slugData);
   if (!favico) {
     return null;
   }
@@ -16,13 +15,15 @@ const Seo = ({ children, slugData, favico }: Props) => {
   const objValues = Object.values(favico);
   const page = slugData?.[0];
 
-  const canonicalUrlArticles = typeof window !== 'undefined' 
-    ? `${window.location.origin}/${slugData.editorial?.slug}/${slugData.slug}`
-    : '';
+  const canonicalUrlArticles =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}/${slugData.editorial?.slug}/${slugData.slug}`
+      : '';
 
-  const canonicalUrlPageData = typeof window !== 'undefined' 
-    ? `${window.location.origin}/${page?.slug}/${page?.slug}`
-    : '';
+  const canonicalUrlPageData =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}/${page?.slug}/${page?.slug}`
+      : '';
 
   return (
     <>
@@ -32,10 +33,21 @@ const Seo = ({ children, slugData, favico }: Props) => {
         ))}
         <title>{page?.title || slugData.title}</title>
         <meta name="next-head-count" content="4" />
-        <meta name="description" content={page?.meta_description || slugData.subtitle} />
-        <meta name="title" content={slugData.title || ''}/>
-        {slugData.content && <meta itemProp="image" content={slugData.content.image.desktop_image_path || ''} />}
-        <link rel="canonical" href={canonicalUrlPageData || canonicalUrlArticles} />
+        <meta
+          name="description"
+          content={page?.meta_description || slugData.subtitle}
+        />
+        <meta name="title" content={slugData.title || ''} />
+        {slugData.content && (
+          <meta
+            itemProp="image"
+            content={slugData.content.image.desktop_image_path || ''}
+          />
+        )}
+        <link
+          rel="canonical"
+          href={canonicalUrlPageData || canonicalUrlArticles}
+        />
         <meta name="keywords" content={page?.meta_keywords || ''} />
       </Head>
       {children}
