@@ -1,5 +1,7 @@
-import { loaderProp } from "@app/utils/loaderSrcNextImage";
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
+import { Container } from './CoverImage.styles';
+import { useWindowSize } from 'rooks';
 
 interface CoverImageProps {
   content?: {
@@ -10,21 +12,28 @@ interface CoverImageProps {
   };
 }
 
-export default function CoverImage({content}: CoverImageProps) {
+export default function CoverImage({ content }: CoverImageProps) {
+  const { innerWidth } = useWindowSize();
+  const [image, setImage] = useState<string | undefined>('');
+
+  useEffect(() => {
+    const isMobile = innerWidth && innerWidth <= 425;
+    const selectedImage = isMobile
+      ? content?.image.image_mobile_path
+      : content?.image.desktop_image_path;
+    setImage(selectedImage);
+  }, [innerWidth, content]);
+
   return (
-    <>
+    <Container>
       {content && (
-         <Image 
-         src={content?.image.desktop_image_path ?? ''}
-         alt="Content"
-         className="object-center object-cover pointer-events-none"
-         priority={true}
-         loader={loaderProp}
-         width={0}
-         height={0}
-         style={{ width: '100%', height: 'calc(-70px + 100vh)' }}
-       />
+        <img
+          src={image || ''}
+          alt={image}
+          className="object-center object-cover pointer-events-none"
+          style={{ width: '100%', height: 'calc(-70px + 100vh)' }}
+        />
       )}
-    </>
-  )
+    </Container>
+  );
 }

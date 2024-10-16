@@ -2,6 +2,25 @@ import dynamic from 'next/dynamic';
 import get from 'lodash/get';
 import { Fragment, ReactNode } from 'react';
 import { useRouter } from 'next/router';
+import styled, { css } from 'styled-components';
+
+const BaseStructWrapper = styled.div<{ $hasAnyData?: boolean }>`
+  ${({ $hasAnyData }) => {
+    if ($hasAnyData) {
+      return css`
+        width: 100%;
+        height: calc(100vh - 70px);
+        margin-bottom: 2.5rem;
+        padding-bottom: 0px;
+        overflow: hidden;
+      `;
+    } else {
+      return css`
+        display: none;
+      `;
+    }
+  }}
+`;
 
 const DynamicMenu = dynamic(() =>
   import('@app/components/Struct/Menu').then((mod) => mod.default)
@@ -63,9 +82,7 @@ export default function BaseStruct({ children, navigation }: BaseStructProps) {
 
   return (
     <Fragment>
-      <div
-        className={`${hasAnyData ? 'w-full h-[calc(100vh-70px)] mb-10 pb-0 overflow-hidden' : 'hidden'}`}
-      >
+      <BaseStructWrapper $hasAnyData={hasAnyData}>
         {shouldRenderMenu && deliveryMenuData.length > 0 && (
           <DynamicMenu items={deliveryMenuData} />
         )}
@@ -75,7 +92,7 @@ export default function BaseStruct({ children, navigation }: BaseStructProps) {
         {shouldRenderCarrousel && deliveryCarouselData.length > 0 && (
           <DynamicCarousel items={deliveryCarouselData} />
         )}
-      </div>
+      </BaseStructWrapper>
       {children}
       {shouldRenderFooter && deliveryFooter.length > 0 && (
         <DynamicFooter items={deliveryFooter} />

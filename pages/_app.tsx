@@ -9,6 +9,7 @@ import '../styles/article.styles.css';
 import '@fontsource-variable/montserrat';
 import '@fontsource-variable/noto-sans';
 import '@fontsource/poppins';
+import { useWindowSize } from 'rooks';
 
 export const montserrat = Montserrat({
   weight: ['400', '700', '500'],
@@ -36,6 +37,7 @@ export const poppins = Poppins({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const { innerWidth } = useWindowSize();
   useEffect(() => {
     const handleRouteChange = (url: any) => {
       gtag.pageview(url);
@@ -46,6 +48,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+  useEffect(() => {
+    if (innerWidth && (innerWidth <= 460 || innerWidth >= 1024)) {
+      import('../styles/article.responsive.styles.css');
+    }
+  }, [innerWidth]);
 
   return (
     <main

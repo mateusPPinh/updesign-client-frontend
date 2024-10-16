@@ -4,10 +4,12 @@ import dynamic from 'next/dynamic';
 import get from 'lodash/get';
 import { colorClassMap } from '@app/styles/colorClassMap';
 
-const Footer = dynamic(() => import('@app/components/Struct/Footer'));
-const DynamicMenu = dynamic(() =>
-  import('@app/components/Struct/Menu').then((mod) => mod.default)
-);
+const Footer = dynamic(() => import('@app/components/Struct/Footer'), {
+  ssr: false
+});
+const DynamicMenu = dynamic(() => import('@app/components/Struct/Menu'), {
+  ssr: false
+});
 const Article = dynamic(() => import('@app/components/Article'), {
   ssr: true
 });

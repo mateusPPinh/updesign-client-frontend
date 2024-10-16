@@ -15,6 +15,17 @@
 
 .sideMenuBgColor {
   background-color: #142634;
+  padding: 40px 40px 96px;
+}
+
+.menuItemText {
+  font-family: var(--font-poppins);
+  font-size: 32px;
+  line-height: 110%;
+  color: rgb(255, 255, 255);
+  margin-top: 0px;
+  margin-bottom: 40px;
+  font-weight: 500;
 }
 
 .paragraphSubtitleFooter {

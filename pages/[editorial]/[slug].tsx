@@ -8,6 +8,7 @@ import {
   loadClientComponents
 } from '@app/store/api-handler';
 import get from 'lodash/get';
+const PageLoading = dynamic(() => import('@app/components/PageLoading'));
 
 interface ArticlePageProps {
   article: ArticleProps;
@@ -20,7 +21,7 @@ const ArticlePage = ({ article, appInfo, components }: ArticlePageProps) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return <PageLoading />;
   }
 
   return (
@@ -93,7 +94,7 @@ export async function getStaticProps({
       appInfo: loadIcons || {},
       components: components || []
     },
-    revalidate: 10
+    revalidate: 3600
   };
 }
 
