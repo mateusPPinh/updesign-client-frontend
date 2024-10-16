@@ -24,18 +24,20 @@ const RenderPages = ({ pageDataProps, pageblockData }: RenderSwitchProps) => {
     return null;
   }
   const pageData = get(pageDataProps, '[0]', []);
-  console.log('render pages', pageData)
   const pageTemplate = get(pageData, 'page_template', null);
   const mountPageInputTemplate = `page_input_template${pageTemplate}`;
 
   switch (mountPageInputTemplate) {
     case 'page_input_template_sobre':
-      return <About pageData={pageData} pageblockData={pageblockData}/>;
+      return <About pageData={pageData} pageblockData={pageblockData} />;
     case 'page_input_template_home':
       return (
         <Home
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           pageData={pageData[0]}
           articles={pageblockData[0].blocksData?.centerMiddle || []}
+          pageblockData={pageblockData}
         />
       );
     case 'page_input_template_contato':

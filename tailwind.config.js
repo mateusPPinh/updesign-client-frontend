@@ -17,6 +17,7 @@ const config = {
       md: '768px',
       lg: '976px',
       xl: '1440px',
+      mb: { 'max': '425px' }
     },
     colors: {
       blueDark: '#142634',
@@ -29,11 +30,11 @@ const config = {
       transparent: 'transparent',
     },
     fontFamily: {
-      primary: ['Montserrat', 'sans-serif'],
+      primary: ['Montserrat Variable', 'sans-serif'],
       secondary: ['Roboto', 'serif'],
       tertiary: ['GeistMono-Medium', 'sans-serif'],
-      sans: ['Montserrat', 'sans-serif'],
-      noto: ['Noto Sans', 'sans-serif'],
+      sans: ['Montserrat Variable', 'sans-serif'],
+      noto: ['Noto Sans Variable', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
     },
     letterSpacing: {

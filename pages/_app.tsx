@@ -4,31 +4,41 @@ import { Montserrat, Noto_Sans, Poppins } from 'next/font/google';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google';
+import '../styles/article.styles.css';
+import '@fontsource-variable/montserrat';
+import '@fontsource-variable/noto-sans';
+import '@fontsource/poppins';
+import { useWindowSize } from 'rooks';
+import { DataContextProvider } from '@app/contexts/DataContext';
 
 export const montserrat = Montserrat({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-montserrat'
 });
 
 export const notosans = Noto_Sans({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-notosans'
 });
 
 export const poppins = Poppins({
   weight: ['400', '700', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-poppins'
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const { innerWidth } = useWindowSize();
   useEffect(() => {
     const handleRouteChange = (url: any) => {
       gtag.pageview(url);
@@ -40,11 +50,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
+  useEffect(() => {
+    if (innerWidth && (innerWidth <= 460 || innerWidth >= 1024)) {
+      import('../styles/article.responsive.styles.css');
+    }
+  }, [innerWidth]);
+
   return (
-    <>
-      <Component {...pageProps} />
+    <main
+      className={`${notosans.variable} ${montserrat.variable} ${poppins.variable}`}
+    >
+      <DataContextProvider>
+        <Component {...pageProps} />
+      </DataContextProvider>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
-    </>
+    </main>
   );
 }
 

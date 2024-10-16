@@ -3,10 +3,9 @@ type ArticleHTMLBodyProps = {
 };
 
 export function ArticleHTMLBody({ articleBody }: ArticleHTMLBodyProps) {
-  console.log(articleBody, 'ArticleHTMLBody');
   return (
     <div
-      className="article_html [&>p]:font-noto"
+      className="prose mx-auto max-w-[1200px] w-full"
       dangerouslySetInnerHTML={{ __html: articleBody }}
     />
   );

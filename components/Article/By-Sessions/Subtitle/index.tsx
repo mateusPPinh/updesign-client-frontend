@@ -1,5 +1,5 @@
 type ArticleSubtitleProps = { subtitle: string };
 
 export function Subtitle({ subtitle }: ArticleSubtitleProps) {
-  return <h2 className="articleSubtitleP">{subtitle}</h2>;
+  return <h2 className="">{subtitle}</h2>;
 }

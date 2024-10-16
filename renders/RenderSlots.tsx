@@ -8,12 +8,14 @@ type RenderSlotsProps = {
   siteApiData?: UmbrielVectorProps[];
   componentsData?: ComponentsProps[];
   articleProps?: object;
+  clientComponents?: Array<any>;
 };
 
 export default function RenderSlots({
   siteApiData,
   componentsData,
   articleProps,
+  clientComponents
 }: RenderSlotsProps) {
   const pageblockData = get(siteApiData, '[0]', []);
   const pageblockDataSlotType = get(pageblockData, 'blockType', null);
@@ -27,11 +29,14 @@ export default function RenderSlots({
 
   return (
     <RenderBaseSwitch
-      components={components}
+      components={[components]}
       componentsType={componentsType}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       pageblockData={pageblockData}
       pageblockDataSlotType={pageblockDataSlotType}
       articlesList={articleProps || {}}
+      clientComponents={clientComponents || []}
     />
   );
 }
