@@ -23,13 +23,18 @@ interface SlugProps {
 const RenderPages = dynamic(() => import('../renders/RenderPages'));
 const RenderSlots = dynamic(() => import('../renders/RenderSlots'));
 const BaseStruct = dynamic(() => import('../components/Struct/BaseStruct'));
-const Seo = dynamic(() => import('@app/providers/Seo'))
+const Seo = dynamic(() => import('@app/providers/Seo'));
 
-const DynamicPage = ({ createSlug, siteData, components, appInfo }: SlugProps) => {
+const DynamicPage = ({
+  createSlug,
+  siteData,
+  components,
+  appInfo
+}: SlugProps) => {
   if (typeof window !== 'undefined') {
     console.group('[PageSlugProps]', siteData);
   }
-  
+
   return (
     <Seo slugData={createSlug} favico={appInfo}>
       <BaseStruct navigation={siteData}>
