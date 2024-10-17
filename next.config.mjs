@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env:  {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_UMBRIEL_API
+    NEXT_PUBLIC_UMBRIEL_API: process.env.NEXT_PUBLIC_UMBRIEL_API
   },
   async rewrites () {
     return {
