@@ -41,9 +41,7 @@ export default function Footer({ items }: FooterProps) {
                 className="w-max flex flex-col justify-center ml-0 mr-0 mb-6 pt-0 pb-0"
                 key={index}
               >
-                <p className="font-poppins text-xs font-bold tracking-[3px] uppercase mb-1">
-                  {it.title_top}
-                </p>
+                <p className="title__top">{it.title_top}</p>
                 <p className="font-noto text-xs font-normal">
                   {it.title_bottom}
                 </p>
