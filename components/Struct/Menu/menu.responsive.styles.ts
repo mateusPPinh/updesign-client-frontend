@@ -9,6 +9,14 @@ export const Container = styled.div`
     }
   }
 
+  @media (width: 375px) {
+    > div:first-child {
+      margin-left: 1rem;
+      margin-top: -1rem;
+      background: none;
+    }
+  }
+
   @media (min-width: 768px) {
     > div {
       padding-left: 0.8rem;
@@ -19,7 +27,7 @@ export const Container = styled.div`
 `;
 
 export const ImageResponsiveContainer = styled.div`
-  @media (min-width: 425px) {
+  @media (min-width: 425px) and (width: 375px) {
     img {
       width: 100%;
       max-width: 48px;

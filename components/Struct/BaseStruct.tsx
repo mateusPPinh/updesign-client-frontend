@@ -8,6 +8,9 @@ const BaseStructWrapper = styled.div<{ $hasAnyData?: boolean }>`
   @media (max-width: 425px) {
     height: 0px !important;
   }
+  @media (max-width: 375px) {
+    height: 0px !important;
+  }
   ${({ $hasAnyData }) => {
     if ($hasAnyData) {
       return css`

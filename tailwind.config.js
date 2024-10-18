@@ -18,6 +18,7 @@ const config = {
       lg: '976px',
       xl: '1440px',
       xl1: '2560px',
+      sm2: '375px',
       mb: { 'max': '425px' },
       tb: { 'min': '726px' }
     },
