@@ -86,22 +86,47 @@ export default function Footer({ items }: FooterProps) {
                 <small className="ml-1 mr-1">|</small>
               </>
             )}
-            <small className="font-poppins text-xs font-medium mr-1 tracking-[1px]">
-              Desenvolvido e distribuído por
-            </small>
-            <Image
-              loading="eager"
-              alt="Logomarca UpDesign Brasil"
-              src="/assets/umbriel-logo.svg"
-              width={0}
-              height={0}
-              priority={true}
-              style={{
-                height: 'auto',
-                width: '80px',
-                backgroundSize: 'cover'
-              }}
-            />
+            <>
+              {innerWidth && innerWidth <= 375 ? (
+                <div className="flex flex-col items-start">
+                  <small className="font-poppins text-xs font-medium mr-1 tracking-[1px]">
+                    Desenvolvido e distribuído por
+                  </small>
+                  <Image
+                    loading="eager"
+                    alt="Logomarca UpDesign Brasil"
+                    src="/assets/umbriel-logo.svg"
+                    width={0}
+                    height={0}
+                    priority={true}
+                    style={{
+                      height: 'auto',
+                      width: '80px',
+                      backgroundSize: 'cover'
+                    }}
+                  />
+                </div>
+              ) : (
+                <>
+                  <small className="font-poppins text-xs font-medium mr-1 tracking-[1px]">
+                    Desenvolvido e distribuído por
+                  </small>
+                  <Image
+                    loading="eager"
+                    alt="Logomarca UpDesign Brasil"
+                    src="/assets/umbriel-logo.svg"
+                    width={0}
+                    height={0}
+                    priority={true}
+                    style={{
+                      height: 'auto',
+                      width: '80px',
+                      backgroundSize: 'cover'
+                    }}
+                  />
+                </>
+              )}
+            </>
           </div>
         </div>
       </div>

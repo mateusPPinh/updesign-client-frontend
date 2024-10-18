@@ -46,8 +46,7 @@ export default function MenuBaseStruct({
             alt="Logo Up Design Brasil"
             style={{
               backgroundPosition: 'center center',
-              backgroundSize: 'cover',
-              width: '72px !important'
+              backgroundSize: 'cover'
             }}
           />
         </Link>
