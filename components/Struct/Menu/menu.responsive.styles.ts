@@ -8,10 +8,18 @@ export const Container = styled.div`
       margin-top: -1rem;
     }
   }
+
+  @media (min-width: 768px) {
+    > div {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+      margin-top: -1.4rem;
+    }
+  }
 `;
 
 export const ImageResponsiveContainer = styled.div`
-  @media (max-width: 425px) {
+  @media (min-width: 425px) {
     img {
       width: 100%;
       max-width: 48px;
@@ -19,21 +27,21 @@ export const ImageResponsiveContainer = styled.div`
       max-height: 51px;
     }
   }
+
+  /* @media (min-width: 768px) {
+    img {
+      width: 100%;
+      max-width: 48px;
+      height: 100%;
+      max-height: 51px;
+    }
+  } */
 `;
 
 export const BurgerMenuResponsiveContainer = styled.div`
-  @media (max-width: 425px) {
+  @media (min-width: 425px) {
     img {
-      width: 100%;
-      max-width: 40px;
+      width: 40px;
     }
   }
 `;
-
-// export const OpenedMenuResponsiveContainer = styled.div<{ $isOpen?: boolean }>`
-//   ${({ $isOpen }) => {
-//     if ($isOpen) {
-//       return css``;
-//     }
-//   }}
-// `;

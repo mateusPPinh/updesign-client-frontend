@@ -36,10 +36,13 @@ export default function SideMenu({
           top-0
           right-0
           z-10
-          max-w-[400px]
+          xl:max-w-[400px]
           mb:max-w-none
-          w-[calc(100%-32px)]
           mb:w-full
+          tb:max-w-none
+          xl:w-[400px]
+          md:max-w-none
+          md:w-full
           h-full
           bg-white
           transform ${menuClass}
