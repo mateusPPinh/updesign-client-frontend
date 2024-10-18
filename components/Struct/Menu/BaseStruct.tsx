@@ -47,7 +47,7 @@ export default function MenuBaseStruct({
             style={{
               backgroundPosition: 'center center',
               backgroundSize: 'cover',
-              width: '72px'
+              width: '72px !important'
             }}
           />
         </Link>

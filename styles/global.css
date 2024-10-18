@@ -130,6 +130,29 @@ a {
   }
 }
 
+@media(width: 768px) {
+  .page-block {
+    margin-top: -6.1rem;
+  }
+  .page-block > div {
+    width: 736px !important;
+    margin-left: 1rem;
+  }
+
+  .page-block >div {
+    gap: 12px !important;
+  }
+
+  .page-block > div>div > img {
+    background-position: center center;
+    background-size: cover;
+    width: 736px !important;
+    height: 280px !important;
+    min-width: 0px !important;
+    min-height: 0 !important;
+  }
+}
+
 .articleHeading1 {
   font-size: 32px;
   line-height: 110%;

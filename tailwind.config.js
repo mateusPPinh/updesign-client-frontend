@@ -17,7 +17,9 @@ const config = {
       md: '768px',
       lg: '976px',
       xl: '1440px',
-      mb: { 'max': '425px' }
+      xl1: '2560px',
+      mb: { 'max': '425px' },
+      tb: { 'min': '726px' }
     },
     colors: {
       blueDark: '#142634',
