@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { loaderProp } from '@app/utils/loaderSrcNextImage';
-import GoDownAnimation from '@app/components/GoDownAnimation';
 
 type ImageBackgroundType = {
   image_desktop_path: string;
@@ -8,9 +7,9 @@ type ImageBackgroundType = {
 
 type ImageBackgroundProps = { items: ImageBackgroundType[] };
 
-export default function ImageBackground({ items }: ImageBackgroundProps) {
+export default function RenderImage({ items }: ImageBackgroundProps) {
   return (
-    <div className="relative overflow-hidden">
+    <>
       {items.map((i, k) => (
         <Image
           key={k}
@@ -20,11 +19,10 @@ export default function ImageBackground({ items }: ImageBackgroundProps) {
           priority={true}
           width={0}
           height={0}
-          style={{ width: '100%', height: 'calc(-70px + 100vh)' }}
+          style={{ width: '100%', height: '100%' }}
           loader={loaderProp}
         />
       ))}
-      <GoDownAnimation id="#about">CONHEÇA</GoDownAnimation>
-    </div>
+    </>
   );
 }

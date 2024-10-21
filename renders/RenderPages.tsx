@@ -29,7 +29,9 @@ const RenderPages = ({ pageDataProps, pageblockData }: RenderSwitchProps) => {
 
   switch (mountPageInputTemplate) {
     case 'page_input_template_sobre':
-      return <About pageData={pageData} pageblockData={pageblockData} />;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      return <About />;
     case 'page_input_template_home':
       return (
         <Home
@@ -41,7 +43,7 @@ const RenderPages = ({ pageDataProps, pageblockData }: RenderSwitchProps) => {
         />
       );
     case 'page_input_template_contato':
-      return <Contact pageData={pageData} pageblockData={pageblockData} />;
+      return <Contact />;
     default:
       return (
         <div className="w-full">

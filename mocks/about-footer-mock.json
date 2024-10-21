@@ -1,0 +1,26 @@
+[
+  {
+    "name": "behance",
+    "brand_path": "/assets/behance-white.svg",
+    "brand_alt": "Logomarca da plataforma de portfólio Behance",
+    "url": "https://www.behance.net/UpDesignBrasil"
+  },
+  {
+    "name": "facebook",
+    "brand_path": "/assets/facebook-white.svg",
+    "brand_alt": "Logomarca da rede social Facebook (atualmente chamado de Meta)",
+    "url": "https://www.facebook.com/updesignbrasil/"
+  },
+  {
+    "name": "instagram",
+    "brand_path": "/assets/instagram-white.svg",
+    "brand_alt": "Logomarca da rede social Instagram",
+    "url": "https://www.instagram.com/updesignbrasil/"
+  },
+  {
+    "name": "linkedin",
+    "brand_path": "/assets/linkedin-white.svg",
+    "brand_alt": "Logomarca da rede social Linkedin",
+    "url": "https://www.linkedin.com/company/up-design-brasil/"
+  }
+]

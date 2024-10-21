@@ -2,8 +2,10 @@
 import { useEffect, useState } from 'react';
 import { Container } from './CoverImage.styles';
 import { useWindowSize } from 'rooks';
+import GoDownAnimation from '@app/components/GoDownAnimation';
 
 interface CoverImageProps {
+  title: string;
   content?: {
     image: {
       desktop_image_path: string;
@@ -12,7 +14,7 @@ interface CoverImageProps {
   };
 }
 
-export default function CoverImage({ content }: CoverImageProps) {
+export default function CoverImage({ content, title }: CoverImageProps) {
   const { innerWidth } = useWindowSize();
   const [image, setImage] = useState<string | undefined>('');
 
@@ -34,6 +36,7 @@ export default function CoverImage({ content }: CoverImageProps) {
           style={{ width: '100%', height: 'calc(-70px + 100vh)' }}
         />
       )}
+      <GoDownAnimation id={`#${title}`}>PROJETO</GoDownAnimation>
     </Container>
   );
 }

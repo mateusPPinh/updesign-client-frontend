@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import get from 'lodash/get';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import styled, { css } from 'styled-components';
 
 const BaseStructWrapper = styled.div<{ $hasAnyData?: boolean }>`
@@ -42,12 +43,15 @@ const DynamicCarousel = dynamic(
   () => import('@app/components/Struct/Carousel')
 );
 
+const DynamicPageImage = dynamic(import('@app/components/Struct/PageImage'));
+
 type BaseStructProps = {
   children: ReactNode;
   navigation: Array<any>;
 };
 
 export default function BaseStruct({ children, navigation }: BaseStructProps) {
+  const path = usePathname();
   const router = useRouter();
   const pathname = router.pathname;
 
@@ -75,21 +79,42 @@ export default function BaseStruct({ children, navigation }: BaseStructProps) {
     'components.pageMainImage',
     []
   );
+  const deliveryPageImage = get(
+    deliveryNavigationItemsToComponents,
+    'components.pageImage',
+    []
+  );
+
+  console.log('deliveryPageMainImage>>>', deliveryPageMainImage);
 
   const shouldRenderMenu = true;
   const shouldRenderFooter = pathname !== '/contato';
-  const shouldRenderHeaderImage = pathname === '/sobre';
+  const shouldRenderHeaderImage = path === '/sobre';
   const shouldRenderCarrousel = pathname === '/';
+  const shouldRenderPageImage = path === '/contato';
+
+  console.log('shouldRenderHeaderImage::::', shouldRenderHeaderImage);
 
   const hasAnyData =
     deliveryMenuData.length > 0 ||
     deliveryFooter.length > 0 ||
-    deliveryCarouselData.length > 0;
+    deliveryCarouselData.length > 0 ||
+    deliveryPageMainImage.length > 0;
   return (
     <>
       <BaseStructWrapper $hasAnyData={hasAnyData}>
-        {shouldRenderMenu && deliveryMenuData.length > 0 && (
+        {shouldRenderPageImage ? (
+          <div className="z-10">
+            <DynamicMenu items={deliveryMenuData} />
+          </div>
+        ) : (
           <DynamicMenu items={deliveryMenuData} />
+        )}
+        {shouldRenderHeaderImage && deliveryPageMainImage.length > 0 && (
+          <DynamicHeaderImage items={deliveryPageMainImage} />
+        )}
+        {shouldRenderPageImage && deliveryPageImage.length > 0 && (
+          <DynamicPageImage items={deliveryPageImage} />
         )}
         {shouldRenderCarrousel && deliveryCarouselData.length > 0 && (
           <DynamicCarousel items={deliveryCarouselData} />

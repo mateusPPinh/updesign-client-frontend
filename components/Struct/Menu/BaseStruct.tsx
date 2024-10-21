@@ -43,6 +43,7 @@ export default function MenuBaseStruct({
             priority={true}
             width={0}
             height={0}
+            className="xl:w-[72px] xl1:w-[72px]"
             alt="Logo Up Design Brasil"
             style={{
               backgroundPosition: 'center center',
