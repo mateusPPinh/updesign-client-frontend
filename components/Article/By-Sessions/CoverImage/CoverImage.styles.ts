@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
+  overflow: hidden;
   /*
     Mobile 425px: Width 425px x Height 752px
   */

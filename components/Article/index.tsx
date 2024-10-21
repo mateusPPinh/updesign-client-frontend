@@ -12,8 +12,8 @@ export default function Article(props: ArticleProps) {
 
   return (
     <>
-      <CoverImage content={props.content} />
-      <ArticleHTMLBody articleBody={props.articleBody} />
+      <CoverImage content={props.content} title={props.title} />
+      <ArticleHTMLBody articleBody={props.articleBody} title={props.title} />
     </>
   );
 }

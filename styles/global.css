@@ -222,3 +222,67 @@ a {
 html {
   scroll-behavior: smooth;
 }
+
+.custom__about__history {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.custom__titleTextBlock__container + .custom__titleTextBlock__container {
+  margin-top: -2rem !important;
+}
+
+ .customAboutCSS {
+  padding-top: 40px !important;
+  padding-bottom: 0px !important;
+}
+
+.custom__h3 {
+  font-family: var(--font-poppins);
+  font-size: 12px;
+  line-height: 110%;
+  color: rgb(20, 38, 52);
+  margin-top: 8px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.custom__strong {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  line-height: 110%;
+  color: rgb(20, 38, 52);
+  font-weight: 500;
+}
+
+.custom__span__subtitle > p {
+  margin-top: 8px;
+}
+
+.custom__span__subtitle > p {
+  margin-bottom: 8px !important;
+}
+
+.about__h2 {
+  font-family: var(--font-poppins);
+  font-size: 12px;
+  line-height: 110%;
+  color: rgb(255, 255, 255);
+  margin-top: 0px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.about__h3 {
+  font-family: var(--font-notosans);
+  font-size: 16px;
+  line-height: 160%;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  text-align: center;
+}
