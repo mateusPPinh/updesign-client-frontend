@@ -27,7 +27,7 @@ const Seo = dynamic(() => import('@app/providers/Seo'));
 
 const HomePage = ({ createSlug, siteData, appInfo, components }: SlugProps) => {
   return (
-    <Seo slugData={createSlug} favico={appInfo}>
+    <Seo slugData={createSlug} favico={appInfo} customPageTitle="UP Design">
       <BaseStruct navigation={siteData}>
         <RenderSlots siteApiData={siteData} componentsData={components} />
         <RenderPages pageDataProps={createSlug} pageblockData={siteData} />

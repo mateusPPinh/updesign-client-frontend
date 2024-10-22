@@ -5,9 +5,10 @@ interface Props {
   slugData?: any;
   children?: ReactNode;
   favico?: object;
+  customPageTitle?: string;
 }
 
-const Seo = ({ children, slugData, favico }: Props) => {
+const Seo = ({ children, slugData, favico, customPageTitle }: Props) => {
   if (!favico) {
     return null;
   }
@@ -31,7 +32,9 @@ const Seo = ({ children, slugData, favico }: Props) => {
         {objValues.map((i, k) => (
           <link rel="shortcut icon" href={i} key={k} />
         ))}
-        <title>{page?.title || slugData.title}</title>
+        <title>
+          {customPageTitle || page?.title || `Up Design - ${slugData.title}`}
+        </title>
         <meta name="next-head-count" content="4" />
         <meta
           name="description"
