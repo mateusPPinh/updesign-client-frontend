@@ -1,16 +1,16 @@
 const menu = [
   {
-    title: "Projetos",
-    href: "/projetos"
+    title: 'Projetos',
+    href: '/'
   },
   {
-    title: "Sobre",
-    href: "/sobre"
+    title: 'Sobre',
+    href: '/sobre'
   },
   {
-    title: "Contato",
-    href: "/contato"
+    title: 'Contato',
+    href: '/contato'
   }
-]
+];
 
 export default menu;

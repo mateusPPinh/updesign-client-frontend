@@ -179,3 +179,9 @@ export type EditorialsProps = {
   title: string;
   slug: string;
 };
+
+export type CarrouselItems = {
+  image_middle_desktop_path: string;
+  image_mobile_path: string;
+};
+export type CarrouselContainerProps = { items: CarrouselItems[] };

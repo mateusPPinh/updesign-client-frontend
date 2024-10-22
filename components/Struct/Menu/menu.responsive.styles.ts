@@ -52,4 +52,11 @@ export const BurgerMenuResponsiveContainer = styled.div`
       width: 40px;
     }
   }
+
+  @media (min-width: 1440px) {
+    img {
+      width: 56px;
+      height: 56px;
+    }
+  }
 `;
