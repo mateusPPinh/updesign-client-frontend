@@ -70,6 +70,18 @@ a {
   text-decoration: none;
 }
 
+.page-block > div > div > p {
+  margin-top: -11px !important;
+}
+
+.page-block * img {
+  cursor: pointer;
+}
+
+.page-block > div > div {
+  gap: 1rem;
+}
+
 @media(max-width: 425px) {
   .page-block  {
     margin-top: 50rem;

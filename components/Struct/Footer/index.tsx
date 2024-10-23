@@ -20,8 +20,8 @@ export default function Footer({ items }: FooterProps) {
       <div className="max-w-7xl w-full flex flex-col items-center justify-center mx-auto">
         {innerWidth && innerWidth <= 425 && <BorderMobile />}
         <div className="border-t border-black w-[calc(100%-32px)] flex justify-center items-center h-10 mb:hidden"></div>
-        <div className="w-[calc(100%-32px)] items-center flex flex-col justify-center ml-4 mr-16">
-          <div className="w-[calc(100%-80px)] flex flex-col sm:flex-row justify-between mb-10 md:flex-col xl:flex-row">
+        <div className="w-[calc(100%-32px)] items-center flex flex-col justify-center ml-4">
+          <div className="w-[calc(100%-80px)] flex flex-col sm:flex-row justify-between mb-10  xl:flex-row">
             <div className="w-8 items-center flex flex-col justify-center ml-0 mr-0 mb-6 pt-0 pb-0">
               <Link href="/" target="_blank" rel="noopener noreferrer">
                 <Image
