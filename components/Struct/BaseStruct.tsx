@@ -12,6 +12,9 @@ const BaseStructWrapper = styled.div<{ $hasAnyData?: boolean }>`
   @media (max-width: 375px) {
     height: 0px !important;
   }
+  @media (max-width: 1024px) {
+    height: calc(0px + 100vh);
+  }
   ${({ $hasAnyData }) => {
     if ($hasAnyData) {
       return css`
@@ -85,15 +88,11 @@ export default function BaseStruct({ children, navigation }: BaseStructProps) {
     []
   );
 
-  console.log('deliveryPageMainImage>>>', deliveryPageMainImage);
-
-  const shouldRenderMenu = true;
+  // const shouldRenderMenu = true;
   const shouldRenderFooter = pathname !== '/contato';
   const shouldRenderHeaderImage = path === '/sobre';
   const shouldRenderCarrousel = pathname === '/';
   const shouldRenderPageImage = path === '/contato';
-
-  console.log('shouldRenderHeaderImage::::', shouldRenderHeaderImage);
 
   const hasAnyData =
     deliveryMenuData.length > 0 ||
